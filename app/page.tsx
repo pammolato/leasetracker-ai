@@ -15,8 +15,7 @@ import {
   ytdPayments,
   ytdTotals,
 } from "@/lib/dashboard";
-
-const sectionsAfterVacancies = ["AI Lease Attention"];
+import { leaseAttention } from "@/lib/leaseAttention";
 
 export default function Home() {
   const [propertyId, setPropertyId] = useState("all");
@@ -39,6 +38,7 @@ export default function Home() {
   );
   const alerts = leaseAlerts(propertyId);
   const paymentAlertItems = paymentAlerts(propertyId);
+  const attentionItems = leaseAttention(propertyId);
 
   const summaryCards = [
     { title: "Occupancy Rate", value: formatPercent(occupancy) },
@@ -238,15 +238,42 @@ export default function Home() {
               </div>
             )}
           </section>
-          {sectionsAfterVacancies.map((title) => (
-            <section
-              key={title}
-              className="rounded-lg border border-slate-200 bg-white p-4"
-            >
-              <h2 className="text-base font-semibold">{title}</h2>
-              <p className="mt-2 text-sm text-slate-500">Nothing to show yet.</p>
-            </section>
-          ))}
+          <section className="rounded-lg border border-slate-200 bg-white p-4">
+            <h2 className="text-base font-semibold">AI Lease Attention</h2>
+            <p className="mt-1 text-xs text-slate-500">
+              AI-assisted classification from lease records as of 20 November 2026.
+            </p>
+            {attentionItems.length === 0 ? (
+              <p className="mt-2 text-sm text-slate-500">No leases to classify.</p>
+            ) : (
+              <ul className="mt-2">
+                {attentionItems.map((item) => (
+                  <li
+                    key={item.leaseId}
+                    className="flex flex-col gap-0.5 border-t border-slate-100 py-2 text-sm first:border-t-0"
+                  >
+                    <div className="flex flex-col gap-0.5 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
+                      <span className="font-medium">{item.tenantName}</span>
+                      <span className="text-slate-600">{item.propertyName}</span>
+                      <span className="text-slate-600">Unit {item.unitNumber}</span>
+                      <span
+                        className={
+                          item.attention === "High Attention"
+                            ? "font-medium text-red-700"
+                            : item.attention === "Medium Attention"
+                              ? "font-medium text-amber-700"
+                              : "font-medium text-green-700"
+                        }
+                      >
+                        {item.attention}
+                      </span>
+                    </div>
+                    <p className="text-slate-600">{item.reasons}</p>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </section>
         </div>
       </main>
     </AppShell>

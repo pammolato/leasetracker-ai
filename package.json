@@ -7,12 +7,13 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "test": "node --experimental-strip-types --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --test tests"
+    "test": "node --experimental-strip-types --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --import ./tests/resolve-app-alias.mjs --test tests"
   },
   "dependencies": {
     "next": "16.4.6",
     "react": "19.3.0",
-    "react-dom": "19.3.0"
+    "react-dom": "19.3.0",
+    "wink-naive-bayes-text-classifier": "^2.2.1"
   },
   "devDependencies": {
     "@tailwindcss/turbopack": "4.3.3",
