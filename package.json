@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "test": "node --experimental-strip-types --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --import ./tests/resolve-app-alias.mjs --test tests"
+    "test": "node --experimental-strip-types --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --import ./tests/resolve-app-alias.mjs --test tests/calculations.test.ts tests/leaseAttention.test.ts"
   },
   "dependencies": {
     "next": "16.4.6",
