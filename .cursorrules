@@ -1,0 +1,47 @@
+# LeaseTracker AI Cursor Rules
+
+Follow spec.md and AGENTS.md.
+
+Keep Version 1 simple.
+
+Do not add features that are not required by spec.md.
+
+Use clear, beginner-friendly code.
+
+Prefer small reusable functions.
+
+Do not add unnecessary dependencies.
+
+Do not add a database unless explicitly requested.
+
+Do not add authentication.
+
+Do not add payment processing.
+
+Do not add accounting or tax filing functionality.
+
+Use deterministic application logic for all financial calculations.
+
+Never use AI to calculate rent, VAT, CWT, CUSA,
+expected cash, outstanding balances, or YTD totals.
+
+Do not hardcode VAT, CWT, CUSA VAT, or escalation rates.
+Always use the values stored in the lease data.
+
+Handle rent-free periods correctly.
+
+Use anonymized sample data only.
+
+Never include API keys, passwords, credentials,
+confidential information, or real tenant information.
+
+Keep the AI feature small and separate from financial calculations.
+
+Use a free local or open-source approach for the AI feature.
+Do not require a paid OpenAI or Claude API.
+
+Write automated tests for important calculation logic.
+
+Before making a major change, check that it is required by spec.md.
+
+If there are multiple possible solutions, choose the simplest solution that satisfies the assignment.
